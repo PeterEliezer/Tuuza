@@ -33,8 +33,8 @@ function TestimonialsCarousel() {
     <Carousel className="max-w-2xl mx-auto relative">
       <CarouselContent>
         {testimonials.map((testimonial, idx) => (
-          <CarouselItem key={idx} className="px-4">
-            <div className="bg-card rounded-xl p-8 shadow-md border border-border flex flex-col items-center text-center min-h-[220px]">
+          <CarouselItem key={idx} className="px-4 transition-transform duration-300 hover:scale-105 focus-within:scale-105">
+            <div className="bg-card rounded-xl p-8 shadow-md border border-border flex flex-col items-center text-center min-h-[220px] transition-shadow duration-300 hover:shadow-xl focus-within:shadow-xl">
               <p className="text-lg italic mb-4 text-muted-foreground">“{testimonial.text}”</p>
               <div className="font-bold text-primary">{testimonial.name}</div>
               <div className="text-xs text-muted-foreground">{testimonial.location}</div>
@@ -42,8 +42,8 @@ function TestimonialsCarousel() {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className="-left-4 top-1/2" />
-      <CarouselNext className="-right-4 top-1/2" />
+      <CarouselPrevious className="-left-4 top-1/2 focus-visible:ring-2 focus-visible:ring-primary" aria-label="Previous testimonial" />
+      <CarouselNext className="-right-4 top-1/2 focus-visible:ring-2 focus-visible:ring-primary" aria-label="Next testimonial" />
     </Carousel>
   );
 }
@@ -286,8 +286,8 @@ function FeatureCard({ icon: Icon, title, description, color }: {
   };
 
   return (
-    <div className="bg-card p-6 rounded-2xl border border-border text-center hover:shadow-lg transition-shadow">
-      <div className={`inline-flex p-4 rounded-xl mb-4 ${colorStyles[color]}`}>
+    <div className="bg-card p-6 rounded-2xl border border-border text-center hover:shadow-lg focus-within:shadow-lg transition-shadow duration-300 group cursor-pointer outline-none" tabIndex={0} aria-label={title}>
+      <div className={`inline-flex p-4 rounded-xl mb-4 ${colorStyles[color]} group-hover:scale-110 group-focus:scale-110 transition-transform duration-300`}>
         <Icon className="h-8 w-8" />
       </div>
       <h3 className="text-lg font-bold text-foreground mb-2">{title}</h3>
